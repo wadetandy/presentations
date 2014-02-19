@@ -1,0 +1,17 @@
+<h2>Test Plain Old Javascript Objects</h2>
+<pre><code data-trim class='language-coffeescript'>describe 'Paginator', ->
+  described_class = null
+
+  beforeEach ->
+    module('bbPaginate')
+    inject (Paginator) ->
+      described_class = Paginator
+
+  describe '#new', ->
+    it 'should create a paginator instance if required attributes are provided', ->
+      subject = new described_class
+        current_page:  1
+        per_page:      20
+        total_entries: 100
+      expect(subject.isValid()).toBeTruthy()
+</code></pre>

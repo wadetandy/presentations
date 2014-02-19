@@ -1,0 +1,22 @@
+<h2>Offer Hooks, Not Configuration Options</h2>
+<pre><code data-trim class='language-coffeescript'>class PaginationController
+  constructor: (@scope, @attrs) ->
+    @_pageSelectHandlers = []
+
+  onPageSelect: (fn) =>
+    @_pageSelectHandlers.push(fn)
+  # ...
+
+app.directive 'bbPaginate', ['Paginator', (Paginator) ->
+  controller: ['$scope', '$attrs', PaginationController]
+  # ...
+</code></pre>
+<br>
+
+<h3>This makes extending easy</h3>
+<pre><code data-trim class='language-coffeescript'>app.directive 'bbPaginateScrollTo', ->
+  require: 'bbPaginate'
+  link: ($scope, $element, $attrs, bbPaginateCtrl) ->
+    bbPaginateCtrl.onPageSelect (page) ->
+      $.scrollTo($attrs.bbPaginateScrollTo, 500)
+</code></pre>

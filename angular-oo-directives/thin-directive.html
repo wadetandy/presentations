@@ -1,0 +1,18 @@
+<h2>Write Thin Directives</h2>
+<pre><code data-trim class='language-coffeescript'>app.directive 'bbPaginate', ['Paginator', (Paginator) ->
+  template: """
+    &lt;ul&gt;
+      &lt;li ng-repeat="page in paginator.pages" ng-class="page.listItemClasses()"&gt;
+        &lt;a href="" ng-click="selectPage(page)"&gt;{{page.text}}&lt;/a&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  """
+  scope:
+    pagination: "=bbPaginate"
+  link: ($scope, $element, $attrs) ->
+    $scope.paginator = new Paginator($scope.pagination)
+
+    $scope.$watch 'pagination', $scope.paginator.redraw, true
+]
+
+</code></pre>

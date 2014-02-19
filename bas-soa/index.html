@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/solarized.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<link rel="stylesheet" href="lib/css/bootstrap-pagination.css" />
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+                <h2>Service Oriented Architecture</h2>
+                <h2>in Ruby-on-Rails</h2>
+                <br>
+                <br>
+                <br>
+                <h2>Bloomberg Government</h2>
+                <h3><a href='foo'>about.bgov.com</a></h3>
+
+                <br>
+                <h3>Wade Tandy</h3>
+
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+                        ## Who We Are
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+                        ## How we Started
+
+                        - Traditional Rails 2 app
+                        - Several MySQL Databases
+                          - Each vendor had its own DB
+                        - ActiveRecord models tied to database schema
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+                        ## Problems as we scaled
+
+                        - Vendor lock-in
+                        - Data not available to the rest of the enterprise
+                        - Speed issues as data scales
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+                        ## Bloomberg Application Services (BAS) to the rescue!
+
+                        - XML or Binary protocol
+                        - Versioned and schema-validated API
+                        - New versions are backwards compatible by default
+                        - Self Documenting
+                        - Written in C++ (or sometimes JAVA) and blazing fast
+                        - Built in metering and metrics
+                        - High availability
+					</script>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+                        ## Benefits
+
+                        - Data providers are decoupled from the app
+                        - Larger Bloomberg organization can access data easily
+                        - Can scale one service endpoint without worrying about
+                          the rest of the application
+					</script>
+				</section>
+
+                <section>
+                <h2>We're hiring</h2>
+                <h2><a href='http://jobs.bloomberg.com'>jobs.bloomberg.com</a></h2>
+
+                <br>
+                <h2>Follow</h2>
+                <h2><a href='http://github.com/bloomberg'>github.com/bloomberg</a></h2>
+                <h2><a href='http://github.com/wadetandy'>github.com/wadetandy</a></h2>
+                <h2><a href='http://twitter.com/wadetandy'>@wadetandy</a></h2>
+                </section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/jquery.scrollTo.js"></script>
+		<script src="js/angular.js"></script>
+		<script src="js/underscore.js"></script>
+		<script src="js/bb-paginate.js"></script>
+		<script src="js/paginate-app.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+
+                width: 1000,
+                height: 900,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/remote.js', condition: function() { return !!document.querySelector('[data-remote]'); } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

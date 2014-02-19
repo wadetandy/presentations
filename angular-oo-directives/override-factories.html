@@ -1,0 +1,23 @@
+<h2>Subclass Factories</h2>
+<pre><code data-trim class='language-coffeescript'>app.factory 'StandardPaginator', ['Page', 'PrevPage', 'NextPage', (Page, PrevPage, NextPage) ->
+  class StandardPaginator
+    # do stuff
+
+app.factory 'CustomPaginator', ['StandardPaginator', 'SpecialPage', (StandardPaginator, SpecialPage) ->
+  class CustomPaginator extends StandardPaginator
+    # do stuff
+
+app.directive 'bbPaginate', ['$injector', ($injector) ->
+  # ... skip some stuff
+  link: ($scope, $element, $attrs) ->
+    paginator        = $attrs.paginator || 'StandardPaginator'
+    klass            = $injector.get(paginator)
+    $scope.paginator = new klass($scope.pagination)
+
+    # ... more stuff
+]
+</code></pre>
+
+<pre><code data-trim class='language-html'> &lt;div bb-paginate paginator="CustomPaginator"&gt;
+</code></pre>
+
